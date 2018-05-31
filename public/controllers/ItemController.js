@@ -18,14 +18,18 @@ app.controller('ItemController', function(dataFactory,$scope,$http){
   getResultsPage(1);
   function getResultsPage(pageNumber) {
       if(! $.isEmptyObject($scope.libraryTemp)){
+        $scope.loading = true;
           dataFactory.httpRequest('students?search='+$scope.searchText+'&page='+pageNumber).then(function(data) {
             $scope.data = data.data;
             $scope.totalItems = data.total;
+            $scope.loading = false;
           });
       }else{
+        $scope.loading = true;
         dataFactory.httpRequest('students?page='+pageNumber).then(function(data) {
           $scope.data = data.data;
           $scope.totalItems = data.total;
+          $scope.loading = false;
         });
       }
   }

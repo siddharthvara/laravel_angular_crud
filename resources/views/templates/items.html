@@ -1,4 +1,7 @@
-<div class="row">
+<div class="spinner" ng-show="loading"> 
+    <img src="http://i49.tinypic.com/j5z8mb.gif" alt="Yükleniyor..."/>
+  </div>
+<div class="row" ng-hide="loading">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h1>Item Management</h1>
@@ -16,7 +19,7 @@
 </div>
 
 
-<table class="table table-bordered pagin-table">
+<table class="table table-bordered pagin-table" ng-hide="loading">
     <thead>
         <tr>
             <th>No</th>
