@@ -59,9 +59,12 @@ app.controller('ItemController', function(dataFactory,$scope,$http){
   }
 
   $scope.edit = function(id){
+    $scope.loading = true;
+    console.log($scope.loading);
     dataFactory.httpRequest('students/'+id+'/edit').then(function(data) {
     	console.log(data);
-      	$scope.form = data;
+        $scope.form = data;
+        $scope.loading = false;
     });
   }
 
